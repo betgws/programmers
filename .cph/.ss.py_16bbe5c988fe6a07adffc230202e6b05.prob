@@ -1,0 +1,1 @@
+{"name":"Local: ss","url":"c:\\Users\\itsme\\Desktop\\programing\\ss.py","tests":[{"id":1720080485754,"input":"[\"I 16\", \"I -5643\", \"D -1\", \"D 1\", \"D 1\", \"I 123\", \"D -1\"]","output":"[0,0]"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\itsme\\Desktop\\programing\\ss.py","group":"local","local":true}
