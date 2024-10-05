@@ -42,14 +42,14 @@ def solution(picks, minerals):
         nowList = newMineralList[tempList[i][1]]
 
         if(picks[0] > 0):
-            answer = answer + 5
+            for iron in nowList:
+                answer = answer + 1
             picks[0] = picks[0] - 1
 
         elif(picks[1]> 0 ):
             for iron in nowList:
                 if(iron == "diamond"):
                     answer = answer + 5
-
                 else:
                     answer = answer + 1
             picks[1] = picks[1] - 1
@@ -74,4 +74,4 @@ def solution(picks, minerals):
 def chunk_list5(lst, chunk_size):
     return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
 
-solution([0, 1, 1],["diamond", "diamond", "diamond", "diamond", "diamond", "iron", "iron", "iron", "iron", "iron", "diamond"])
+solution([5, 1, 1],["diamond", "diamond", "diamond", "diamond", "diamond", "iron", "iron", "iron", "iron", "iron", "diamond"])
