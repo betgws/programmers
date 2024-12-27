@@ -6,7 +6,7 @@ def solution(weights):
 
     counter = Counter(weights)
 
-    for i, j in counter.items:
+    for i, j in counter.items():
         if j >= 2:
             answer = answer + j*(j-1)/2
 
@@ -18,7 +18,7 @@ def solution(weights):
 
         if w*2/4 in weights:
             answer+= counter[w*2/4] * counter[w]
-            
+
         if w*3/4 in weights:
             answer+= counter[w*3/4] * counter[w]
         
