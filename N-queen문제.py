@@ -45,3 +45,44 @@ def is_promissing(x):
         if(row[x] == row [i] and abs(row[x] - row[i]) == abs(x-i)):
             return False
     return True
+
+
+
+
+
+n = 4
+row = [0]*n
+
+def is_promising(i):
+    for a in range(x):
+        if(row[a] == row[a-1] and )
+
+
+def nqueen(x):
+
+    for i in range(n):
+        row[x] = i 
+        if(is_promising(row[x])):
+            nqueen(x+1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
