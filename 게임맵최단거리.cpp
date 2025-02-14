@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <unordered_map>
+#include <set>
+
 using namespace std;
 
 // 동, 서, 남, 북 방향을 정의
@@ -55,4 +58,46 @@ int main() {
     cout << "최단 거리: " << result << endl;
 
     return 0;
+}
+
+
+
+
+
+
+
+bool isOneLetterdiff(const string& word1, const string& word2){
+    int diff = 0;
+    for(int i = 0; i < word1.length(); i ++){
+        if(word1[i] != word2[i]){
+            diff++; 
+        }
+        if(diff > 1){
+            return false;
+        }
+    }
+    return diff == 1;
+}
+
+int dfs(const string& start, const string& target, unordered_map<string, vector<string>> &graph){
+    queue<pair<string, int>> q;
+    set<string> visited;
+
+    q.push({start, 0});
+    visited.insert(start);
+
+    while(!q.empty()){
+        auto [current, steps] = q.front();
+        q.pop();
+
+        if(current == target){
+            return steps;
+        }
+
+        for(const string& )
+
+    }
+
+
+
 }
