@@ -44,7 +44,7 @@ def solution(board):
                         break
 
             if(board[TPN][TPM] == "G"):
-                return pop[2]
+                return pop[2] +1
 
     return -1
 
