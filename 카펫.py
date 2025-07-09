@@ -6,6 +6,9 @@
 def solution(brown,yellow):
     answer = []
 
+    if(yellow == 1):
+        return [3,3]
+
     for vertical in range((yellow//2)):
         vertical = vertical + 1
         if(yellow%vertical != 0):
