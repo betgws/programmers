@@ -73,3 +73,33 @@ def solution(orders, course):
                     answer.append(menu)
 
     return sorted(answer)
+
+
+
+
+def solution(orders, course):
+
+    answer = []
+
+
+    for com in course:
+        dic = defaultdict(int)
+
+        for order in orders:
+            order.sort()
+            for comb in combinations(order,com):
+                dic["".join(comb)] += 1
+
+        if not dic: 
+            continue
+
+        max = max(dic.values())
+
+        if(max >= 2):
+            for menu, count in dic.items():
+                if(count == max):
+                    answer.append(menu)
+
+    return answer 
+
+            

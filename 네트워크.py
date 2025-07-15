@@ -22,22 +22,25 @@ def solution(n, computers):
 
 solution(3,[[1, 1, 0], [1, 1, 0], [0, 0, 1]])
 
-def soltion(n, computer):
-    answer = 0 
+def solution1(n, computers):
     visited = [False]*n
+    answer = 0
 
-    def dfs(i):
-        queue = deque([i])
+    def BFS(startInd):
+        queue = deque()
+        queue.append(startInd)
+        visited[startInd] = True
 
         while queue:
-            q = queue.popleft()
-            for ind, k in enumerate(computer[q]):
-                if k[ind] == 1 and visited[ind] == False:
-                    queue.append(ind)
-                    visited[ind] = True
+            j = queue.popleft()
+            for index,i in enumerate(computers[j]):
+                if(i == 1 and visited[index] == False):
+                    visited[index] == True
+                    queue.append(index)
 
-    for i in range(0,n):
+    for i in range(n):
         if(visited[i] == False):
-            dfs(i)
-            answer = answer + 1
-    
+            BFS(i)
+            answer += 1
+
+

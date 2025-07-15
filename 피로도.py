@@ -1,25 +1,16 @@
-from itertools import permutations
-
 def solution(k, dungeons):
-    
-    all = list(permutations(dungeons))
-    realAnswer = 0
+    visited = [False] * len(dungeons)
+    max_count = 0
 
-    for i in all:
-        nk = k
-        answer = 0
-        for a in i:
-            if(a[0]<=nk and nk>0):
-                nk = nk - a[1]
-                answer = answer + 1
+    def DFS(remain, dist):
+        nonlocal max_count
+        max_count = max(max_count, dist)
 
-            else:
-                break
-        if(realAnswer < answer):
-            realAnswer = answer
-        if(realAnswer == len(dungeons)):
-            break
-      
-    return realAnswer
+        for i, (min_required, consumed) in enumerate(dungeons):
+            if not visited[i] and remain >= min_required:
+                visited[i] = True
+                DFS(remain - consumed, dist + 1)
+                visited[i] = False
 
-solution(80,[[80,20],[50,40],[30,10]])
+    DFS(k, 0)
+    return max_count
