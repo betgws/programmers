@@ -1,27 +1,40 @@
 import heapq
 
 def solution(operations):
-    minheap = []
-    maxheap = []
+    minheap, maxheap = [], []
+    visited = {}
+    idx = 0
 
     for op in operations:
         cmd, num = op.split()
         num = int(num)
 
-        if cmd == 'I':  # 값 삽입
-            heapq.heappush(minheap, num)
-            heapq.heappush(maxheap, -num)  # 최대힙은 음수로
-        elif cmd == 'D':
-            if num == 1 and maxheap:  # 최대값 삭제
-                max_val = -heapq.heappop(maxheap)
-                minheap.remove(max_val)  # 다른 힙에서도 제거
-                heapq.heapify(minheap)   # 힙 재정렬
-            elif num == -1 and minheap:  # 최소값 삭제
-                min_val = heapq.heappop(minheap)
-                maxheap.remove(-min_val)
-                heapq.heapify(maxheap)
+        if cmd == "I":
+            heapq.heappush(minheap, (num, idx))
+            heapq.heappush(maxheap, (-num, idx))
+            visited[idx] = True
+            idx += 1
 
-    # 결과 계산
-    if not minheap:
+        elif cmd == "D":
+            if num == 1:  # 최대값 삭제
+                while maxheap and not visited[maxheap[0][1]]:
+                    heapq.heappop(maxheap)
+                if maxheap:
+                    _, i = heapq.heappop(maxheap)
+                    visited[i] = False
+            elif num == -1:  # 최소값 삭제
+                while minheap and not visited[minheap[0][1]]:
+                    heapq.heappop(minheap)
+                if minheap:
+                    _, i = heapq.heappop(minheap)
+                    visited[i] = False
+
+    # 남아 있는 유효 값 정리
+    while minheap and not visited[minheap[0][1]]:
+        heapq.heappop(minheap)
+    while maxheap and not visited[maxheap[0][1]]:
+        heapq.heappop(maxheap)
+
+    if not minheap or not maxheap:
         return [0, 0]
-    return [max(minheap), min(minheap)]
+    return [-maxheap[0][0], minheap[0][0]]
