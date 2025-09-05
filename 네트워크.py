@@ -44,3 +44,38 @@ def solution1(n, computers):
             answer += 1
 
 
+def solution3(n,computer):
+    visited = [False]*n
+
+    def dfs(v):
+        visited[v] = True
+        for ind, i in enumerate(computer[v]):
+            if(visited[ind] != True and i == 1):
+                dfs(i)
+
+    answer = 0
+
+    for i in range(n):
+        if not visited[i]:
+            dfs(i)
+            answer += 1
+
+        return answer 
+    
+
+def solution4(n,computer):
+    visited = [False]*n
+
+    def bfs(start):
+        q = deque([start])
+        visited[start] = True
+        while q:
+            v = q.popleft()
+            for i in range(n):
+                if computer[v][i] == 1 and not visited[i]:
+                    visited[i] = True
+                    q.append[i]
+                    
+
+
+
